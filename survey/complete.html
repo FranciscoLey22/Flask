@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% block title%} **Survey Complete** {% endblock %}
+{% block content %}
+<h1>Thank you for taking this survey!</h1>
+
+<h4>Your responses have been recorded.</h4>
+<!-- <ul>
+  {% for question in survey.questions %}
+  <li>
+    <b>{{ question.question }}:</b>
+    <b> {{ responses[loop.index0]["choice"] }}</b>
+    <b> <i>{{ responses[loop.index0]["text"] }}</i></b>
+    
+  </li>
+  {% endfor %}
+</ul> -->
+
+<form action="/">
+    <button type="submit" class="btn btn-secondary">Take survey again?</button>
+</form>
+{% endblock %}

@@ -50,14 +50,19 @@ def questioning(qid):
 @app.route("/answer", methods=["POST"])
 def handle_question():
     """Save response and redirect to next question."""
-
-    # get the response choice
     choice = request.form['answer']
+    text = request.form.get("text", "")
+
+    # # get the response choice
+    # choice = request.form['answer']
+
+    # add this response to the list in the session
+    responses = session[responses_key]
+    responses.append({"choice": choice, "text":text})
 
     # add this response to the session
-    responses = session[responses_key]
-    responses.append(choice)
     session[responses_key] = responses
+    
 
     if (len(responses) == len(survey.questions)):
         # They've answered all the questions! Thank them.
